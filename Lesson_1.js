@@ -1428,29 +1428,29 @@
 
 // ex.9
 
-let arr = [2,2,1,1,1,2,2]
+// let arr = [2,2,1,1,1,2,2]
 
-function bigind(arr){
-   let max = -Infinity;
-   let res;
-   let obj = {};
-for(let el of arr){
-if(obj[el]===undefined){
-   obj[el]= 1
-}else{
-   obj[el]+=1
-}
-}
-for(let key in obj){
-if(obj[key]>max){
-   max = obj[key]
-   res = key;
-}
-}
-return res;
-}
+// function bigind(arr){
+//    let max = -Infinity;
+//    let res;
+//    let obj = {};
+// for(let el of arr){
+// if(obj[el]===undefined){
+//    obj[el]= 1
+// }else{
+//    obj[el]+=1
+// }
+// }
+// for(let key in obj){
+// if(obj[key]>max){
+//    max = obj[key]
+//    res = key;
+// }
+// }
+// return res;
+// }
 
-console.log(bigind(arr));
+// console.log(bigind(arr));
 
 
 
