@@ -349,3 +349,330 @@
 //    }
 // ];
 // ---------------------------------------------------------
+
+
+
+// deepJS.addStudent(311, "Frank",/*paid=*/true);
+// deepJS.addStudent(410, "Suzy",/*paid=*/true);
+// deepJS.addStudent(709, "Brian",/*paid=*/false);
+// deepJS.addStudent(105, "Henry",/*paid=*/false);
+// deepJS.addStudent(502, "Mary",/*paid=*/true);
+// deepJS.addStudent(664, "Bob",/*paid=*/false);
+// deepJS.addStudent(250, "Peter",/*paid=*/true);
+// deepJS.addStudent(375, "Sarah",/*paid=*/true);
+// deepJS.addStudent(867, "Greg",/*paid=*/false);
+
+// deepJS.enrollStudent(410);
+// deepJS.enrollStudent(105);
+// deepJS.enrollStudent(664);
+// deepJS.enrollStudent(375);
+
+// deepJS.printCurrentEnrollment();
+// console.log("----");
+// deepJS.enrollPaidStudents();
+// console.log("----");
+// deepJS.remindUnpaidStudents();
+
+// // ------------------------------------------------------------------------
+
+//  deepJS = {
+//  currentEnrollment:  [],
+//  studentRecords:  [],
+
+
+
+//     addStudent(id,name,paid) {
+//        this.studentRecords.push({ id, name, paid, });
+//    },
+
+//     enrollStudent(id) {
+//        if (!this.currentEnrollment.includes(id)) {
+//            this.currentEnrollment.push(id);
+//        }
+//    },
+
+//     printCurrentEnrollment() {
+//        this.printRecords(this.currentEnrollment);
+//    },
+
+//     enrollPaidStudents() {
+//        this.currentEnrollment = this.paidStudentsToEnroll();
+//        this.printCurrentEnrollment();
+//    },
+
+//     remindUnpaidStudents() {
+//        this.remindUnpaid(this.currentEnrollment);
+//    },
+
+//     getStudentFromId(studentId) {
+//        return this.studentRecords.find(matchId.bind(this));
+
+//        // *************************
+
+//        function matchId(record) {
+//            return (record.id == studentId);
+//        }
+//    },
+
+//     printRecords(recordIds) {
+//        let records = recordIds.map(this.getStudentFromId.bind(this));
+
+//        records.sort(this.sortByNameAsc);
+
+//        records.forEach(this.printRecord);
+//    },
+
+//     sortByNameAsc(record1,record2){
+//        if (record1.name < record2.name) return -1;
+//        else if (record1.name > record2.name) return 1;
+//        else return 0;
+//    },
+
+//     printRecord(record) {
+//        console.log(`${record.name} (${record.id}): ${record.paid ? "Paid" : "Not Paid"}`);
+//    },
+
+//    paidStudentsToEnroll() {
+//       let recordsToEnroll = this.studentRecords.filter(this.needToEnroll.bind(this));
+
+//       let idsToEnroll = recordsToEnroll.map(this.getStudentId);
+
+//       return [...this.currentEnrollment, ...idsToEnroll];
+//   },
+
+//     needToEnroll(record) {
+//        return (record.paid && !this.currentEnrollment.includes(record.id));
+//    },
+
+//     getStudentId(record) {
+//        return record.id;
+//    },
+
+//     remindUnpaid(recordIds) {
+//        let unpaidIds = recordIds.filter(this.notYetPaid);
+
+//        this.printRecords(unpaidIds);
+//    },
+
+//     notYetPaid(studentId) {
+//        let record = this.getStudentFromId(studentId);
+//        return !record.paid;
+//    },
+//    remindUnpaidStudents() {
+
+//          },
+// }
+// ------------------------------------------------
+// ---------------------------------------------------------------------------
+// -------------------------------------------------------------------------
+// ex.1
+// const toyota1 = {
+//    model: 'Toyota',
+//    type: 'Camry',
+//    logModel(){
+//        console.log(this.model, this.type);
+//    }
+// }
+
+// const toyota2 = {
+//    model: 'Toyota',
+//    type: 'Rav4',
+  
+// }
+
+
+// let res = toyota1.logModel.bind(toyota2)
+
+// console.log(res());
+
+
+// ex.2
+
+// const flights = {
+
+//    flights: [],
+
+//    priorityFlights: [],
+
+//    scheduleFlight(flight){
+//        this.flights.push(flight);
+//    },
+
+//    removeFlight(flight){
+//        this.flights = this.flights.filter(flightFilter.bind(flights));
+//        function flightFilter(f){
+//            if (flight === f){
+//                return this.priorityFlights.includes(flight);
+//            }
+//            return true
+//        }
+//    },
+
+//    makePriorityFlight(flight){
+//        this.priorityFlights.push(flight);
+//    }
+
+// }
+
+
+// flights.scheduleFlight('1');
+
+// flights.makePriorityFlight('1');
+
+// flights.removeFlight('1')
+
+// console.log(flights.flights);
+
+
+// ex.3
+
+// function CarConstructor(model, year){
+//    this.mode = model;
+//    this.year = year;
+//    return "please call me with new keyword";
+// }
+
+// let toyota = new CarConstructor("camry", 2000)
+
+// console.log(toyota);
+
+// ex.4
+
+
+// const objArr = [{ name: '1' }, { name: '2' }, { name: '3' }, { name: '4' }]
+
+// function logName(){
+//     console.log(this.name);
+// }
+// for(let el of objArr){
+//    el.logName = logName
+   
+// }
+// console.log(objArr);
+
+
+// ex.5
+
+
+// const arrayOfObjectNames = [{ name: '1' }, { name: '2' }, { name: '3' }]
+
+// function logArrayObjectNames(){
+//     console.log(this.name);
+// }
+
+
+// arrayOfObjectNames.forEach((el)=>{
+//  console.log(logArrayObjectNames.call(el))
+// })
+
+// ex.6
+
+// const mappedFunc = arrayOfObjectNames.map( (item) => {
+//     let res = function(){
+//         console.log(this.name);
+//     }.bind(item)
+//     return res
+// } );
+
+// console.log(mappedFunc);
+// mappedFunc.forEach(i => i());
+
+
+
+// ex.7
+
+// function CreateCar (id,model,year,color,driveTrain){
+//     this.id = id
+//     this.model = model
+//     this.year = year 
+//     this.color = color
+//     this.driveTrain  = driveTrain 
+// }
+
+// const inventory = {
+
+//     cars: [],
+
+//     addCar(car) {
+//         this.cars.push(car)
+//     },
+
+//     removeCar(id) {
+//        this.cars =  this.cars.filter((car)=>{
+//             return car.id!==id
+//         })
+
+//     },
+
+//     listCars(){
+//         return this.cars
+        
+//     },
+//     listCarsByConditionCallback(conditionCallback){
+//     console.log( this.cars.filter(conditionCallback))
+//     }
+
+// }
+
+// inventory.addCar(new CreateCar(1, 'Toyota', '1996', 'red', '4x4'));
+// inventory.addCar(new CreateCar(2, 'Mercedes', '2000', 'white', 'rear wheel drive'));
+// inventory.addCar(new CreateCar(3, 'BMW', '2020', 'black', 'rear wheel drive'));
+// inventory.addCar(new CreateCar(4, 'BMW', '2020', 'red', 'rear wheel drive'));
+// inventory.addCar(new CreateCar(5, 'BMW', '2020', 'blue', 'rear wheel drive'));
+// inventory.addCar(new CreateCar(6, 'BMW', '2020', 'yello', 'rear wheel drive'));
+//  inventory.removeCar(2);
+//  inventory.listCars();
+//  inventory.listCarsByConditionCallback( (car) => car.model === 'BMW' && car.year === '2020' )
+
+// ex.8
+
+// function Song(title,artist){
+// this.title = title,
+// this.artist = artist
+
+// }
+
+// Song.prototype.play = function (){
+//     console.log("pleying "+ this.artist);
+// }
+
+// let song1 = new Song("Hayi acher", "Aram asatryan");
+
+// console.log(song1);
+
+
+// ex.11
+
+
+// const checkKnow = {
+//     surname: 'surname',
+//     name: 'checkKnow',
+//     foo: {
+//         name: 'foo',
+//         logName(){
+//             console.log(this.surname);
+//         }
+//     },
+//     boo(){
+//         const obj = {
+//             name: 'boo method',
+//             check: () => {
+//                 console.log(this.name);
+//             }
+//         }
+//         obj.check();
+//     }
+// }
+
+
+// checkKnow.foo.logName();
+
+// checkKnow.boo();
+// // 1 depqum tpum e undefinde qani vor logName funkciayi dhisy foo e ev foo i
+// // mej chka surname
+// // 2 depqum ktpi checkknow qani vor ro funchtion i dhisy checknov objectn e 
+// // aysinqn iranic mi makardak vervinn e dra hamar ktpi checknov 
+
+
+
+
